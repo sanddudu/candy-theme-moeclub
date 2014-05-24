@@ -29,9 +29,9 @@ html(ng-app="candy")
               block sidebar
                 include sidebar
     block footer
-      block banner
-        include banner
       #footer.footer
+        block banner
+          include banner
         #footer-inner.footer-inner.container.clearfix.copyright &copy; #{new Date().getFullYear()} #{site.name} #{site.desc}. 
           .poweredby.pull-right Powered by 
             a(href="https://github.com/turingou/candy",title="npm install candy").candy #{sys.name} 

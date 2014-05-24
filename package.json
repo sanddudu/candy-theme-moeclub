@@ -1,6 +1,6 @@
 {
   "name": "candy-theme-moeclub",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "view engine": "jade",
   "static": "./static",
   "description": "A theme for Moe.Club",
