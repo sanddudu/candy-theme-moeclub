@@ -1,0 +1,44 @@
+- var publink = (board && board.id) ? ('new?bid=' + board.id) : 'new'
+
+#header.header
+  #header-inner.header-inner.container.clearfix
+    .row
+      .col-lg-9
+        #logo.logo.clearfix.fn-left
+          h1.clearfix
+            a(href="/") #{site.name}
+        #boards-nav.boards-nav.clearfix.fn-left(ng-controller="boardsNav")
+          a.dropdown-trigger(href="javascript:void(0);",ng-click="list()") #{site.desc}
+            span.icon 
+              i.fa.fa-chevron-down
+          ul.sub-menu.clearfix(ng-hide="!status.show")
+            li(ng-repeat="board in boards"): a(ng-href="/board/{{board.url}}",ng-bind="board.name")
+        #search-bar.search-bar.clearfix(ng-controller="search")
+          form(action="/",method="POST").clearfix
+            .input-group
+              span.input-group-addon
+                i.fa.fa-search
+              input(type="text",name="search",id="search",placeholder="在 #{site.name} 中搜索某个讨论节点或者话题 ......").form-control
+      .col-lg-3
+        .dashboards.clearfix
+          - if (user)
+            ul.nav-dashboard.clearfix
+              li.mime-avatar.clearfix
+                a(href="/member/#{user._id}")
+                  img(src="#{user.avatar}").mini-avatar
+              li
+                a(href="/thread/#{publink}").publish-btn
+                  i.fa.fa-plus
+                  span 发布话题
+              - if (user.type == 'admin')
+                li
+                  a(href="/admin")
+                    i.fa.fa-gear
+                    span 管理
+              li
+                a(href="http://#{site.duoshuo.short_name}.duoshuo.com/logout/?sso=1&redirect_uri=#{url}/sign/out").signout 
+                  i.fa.fa-power-off
+                  span 登出
+          - else
+            .top-sign.clearfix
+              .ds-login.clearfix

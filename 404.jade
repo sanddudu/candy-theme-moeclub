@@ -1,0 +1,10 @@
+extends layout
+
+block main
+  .col-lg-12
+    .not-found.clearfix
+      h3 #{code} 
+        - if (msg)
+          span.msg #{msg}
+        - else 
+          span 貌似没有找到这个页面哦.....

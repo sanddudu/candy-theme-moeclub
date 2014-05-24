@@ -1,0 +1,48 @@
+/**
+*
+* Mixins
+*
+**/
+
+.tra (@second:0.25s) {
+  -webkit-transition: color @second linear, background-color @second linear, border-color @second linear;
+  -moz-transition: color @second linear, background-color @second linear, border-color @second linear;
+  -o-transition: color @second linear, background-color @second linear, border-color @second linear;
+  transition: color @second linear, background-color @second linear, border-color @second linear;
+}
+
+.br (@radius: 4px) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -o-border-radius:@radius;
+}
+
+.bs (@x: 1px, @y: 1px, @blur: 4px, @color: #efefef) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.text-shadow (@x: 1, @y: 1, @blur: 1px, @color: #000) {
+  text-shadow: @arguments;
+  -webkit-text-shadow: @arguments;
+  -moz-text-shadow: @arguments;
+  -o-text-shadow: @arguments;
+}
+
+.box() {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.thumbnail() {
+  border: 1px solid #ddd;
+  padding: 1px;
+  background-color: #fff;
+  margin-right: 8px;
+  .br(3px);
+  .bs();
+}

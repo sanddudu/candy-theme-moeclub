@@ -1,0 +1,19 @@
+extends ../layout
+
+block title
+  | 管理后台
+
+block banner
+
+block content
+  #admin
+    include nav
+    .tab-content
+      include home
+      include board
+      include member
+      include theme
+      include setting
+
+block js
+  script(src="#{static}/javascripts/admin.js")

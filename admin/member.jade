@@ -1,0 +1,16 @@
+#user.tab-pane
+  .list-group
+    - if (users)
+      - each user in users
+        .list-group-item.user.clearfix(data-id="#{user.id}")
+          - if (user.avatar)
+            img.pull-left.avatar.thumbnail(src="#{user.avatar}")
+          span.name
+            - if (user.url)
+              a(href="#{user.url}",target="_blank") #{user.nickname ? user.nickname : user.duoshuo.user_id}
+            - else
+              |#{user.nickname ? user.nickname : user.duoshuo.user_id}
+          span.type
+            |（#{user.type}）
+          span.threads
+            |（发表话题数量：#{user.threads.length}）

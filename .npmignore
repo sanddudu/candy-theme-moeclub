@@ -1,0 +1,10 @@
+.DS_*
+node_modules
+*.sublime*
+psd
+thumb
+*.log
+candy-50x50.png
+candy-140x140.png
+static/stylesheets/style.css
+static/stylesheets/thread.css

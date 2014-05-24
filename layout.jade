@@ -1,0 +1,60 @@
+- var static = static || '/candy-theme-flat';
+
+doctype html
+html(ng-app="candy")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1.0")
+    meta(name="generator",content="#{sys.name}",version="#{sys.version}")
+    block meta
+      meta(name="keywords",content="#{site.name}")
+      meta(name="description",content="#{site.desc}")
+    title 
+      block title
+        |#{site.name}
+    link(rel='shortcut icon',type="image/x-icon",href="#{static}/images/favicon.png")
+    link(rel='stylesheet', href='#{static}/stylesheets/style.css')
+    link(rel='stylesheet', href='#{static}/stylesheets/libs/duoshuo.css')
+    block css
+  body
+    block header
+      include header
+    #content.content
+      #content-inner.content-inner.container.clearfix
+        .row
+          block main
+            .col-lg-9.main-content
+              block content
+            .col-lg-3.sidebar
+              block sidebar
+                include sidebar
+    block footer
+      block banner
+        include banner
+      #footer.footer
+        #footer-inner.footer-inner.container.clearfix.copyright &copy; #{new Date().getFullYear()} #{site.name} #{site.desc}. 
+          .poweredby.pull-right Powered by 
+            a(href="https://github.com/turingou/candy",title="npm install candy").candy #{sys.name} 
+            |v#{sys.version}
+
+    //- libs
+    script(src="#{static}/javascripts/lib/jquery-1.10.2.min.js")
+    script(src="#{static}/javascripts/lib/bootstrap.min.js")
+    script(src="#{static}/javascripts/lib/angular.min.js")
+    script(src="#{static}/javascripts/lib/angular-resource.min.js")
+    //- angular app
+    script(src="#{static}/javascripts/store.js")
+    script(src="#{static}/javascripts/candy.js")
+    //- duoshuo comments configs
+    script.
+      var duoshuoQuery = {}
+      duoshuoQuery.sso = {}
+      duoshuoQuery.short_name = "#{site.duoshuo.short_name}";
+      duoshuoQuery.theme = 'none';
+      duoshuoQuery.sso.login = "#{url}/sign/in";
+      duoshuoQuery.sso.logout = "#{url}/sign/out";
+    script(type="text/javascript",src="http://static.duoshuo.com/embed.js",charset="UTF-8",async)
+    //- hitokoto
+    script(src="#{static}/javascripts/hitokoto.js")
+    //- custom js
+    block js

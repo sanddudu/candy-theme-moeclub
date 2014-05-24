@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .board.clearfix
+    - if (threads.length <= 0)
+      h4.no
+        i.fa.fa-star-o
+        | #{site.name} 好像是个刚创建的论坛， 想成为 
+        a(href="/thread/new") 第一个发言 
+        | 的人吗？
+    - else
+      .threads
+        - each thread in threads
+          - var pined = thread.pined
+          - var username = thread.lz.nickname ? thread.lz.nickname : thread.lz.duoshuo.user_id
+          - var title = thread.name.length >= 78 ? thread.name.substr(0, 78) : thread.name
+          - var attachements = thread.media && thread.media.length > 0
+          .thread.clearfix(class="#{pined ? 'pined' : 'normal'}")
+            .row
+              .col-lg-10.thread-brief.clearfix
+                .avatar
+                  a(href="/member/#{thread.lz.id}")
+                    img(src="#{thread.lz.avatar}")
+                h4.title
+                  a(href="/thread/#{thread.id}").thread-title
+                    - if (pined)
+                      span.pined-label
+                        i.fa.fa-arrow-circle-o-up
+                        | 置顶
+                    | #{title}
+                  span.pubtime
+                    i.fa.fa-clock-o
+                    != moment(thread.pubdate).fromNow()
+                  - if (!pined)
+                    span.name
+                      a(href="/member/#{thread.lz.id}") #{username} /
+                    span.cat
+                      a(href="/board/#{thread.board.url}") #{thread.board.name}
+                  - if (attachements)
+                    span.attachements
+                      i.fa.fa-paperclip
+              .col-lg-2.pull-right
+                  .comments-count.clearfix
+                    i.fa.fa-comment-o
+                    a.ds-thread-count(href="/thread/#{thread.id}#comments",data-thread-key="#{thread.id}",data-count-type="comments") 加载中...
+      include pager/index

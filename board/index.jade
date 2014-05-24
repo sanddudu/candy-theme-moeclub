@@ -1,0 +1,59 @@
+extends ../layout
+
+block meta
+  meta(name="keywords",content="#{board.name},#{site.name}")
+  meta(name="description",content="#{board.desc}")
+
+block title
+  | #{board.name}
+
+block banner
+  .banner.clearfix
+    .banner-inner.clearfix.container
+      .row
+        .col-lg-12
+          h2.title 
+            i.icon-asterisk
+            |#{board.name}
+            span.desc #{board.desc} ( 共 #{board.threads.length} 个话题 )
+
+block content
+  .board.clearfix
+    - if (threads && threads.length <= 0)
+      h4.no
+        i.icon-ban-circle
+        | 这个讨论区还没有人来过，想 
+        a(href="/thread/new?bid=#{board.id}") 说点什么 
+        | 吗？
+    - else
+      .threads
+        - each thread in threads
+          - var pined = thread.pined
+          - var username = thread.lz.nickname ? thread.lz.nickname : thread.lz.duoshuo.user_id
+          - var title = thread.name.length >= 78 ? thread.name.substr(0, 78) : thread.name
+          .thread.clearfix(class="#{pined ? 'pined' : 'normal'}")
+            .row
+              .col-lg-10
+                .avatar
+                  a(href="/member/#{thread.lz.id}")
+                    img(src="#{thread.lz.avatar}")
+                h4.title
+                  a(href="/thread/#{thread.id}")
+                    - if (pined)
+                      span.pined-label
+                        i.icon-chevron-up
+                        | 置顶
+                    | #{title}
+                  span.pubtime
+                    i.icon-time
+                    != moment(thread.pubdate).fromNow()
+                  - if (!pined)
+                    span.name
+                      a(href="/member/#{thread.lz.id}") #{username} /
+                    span.cat
+                      a(href="/board/#{thread.board.url}") #{thread.board.name}
+              .col-lg-2.pull-right
+                .comments-count.clearfix
+                  i.icon-comment
+                  a.ds-thread-count(href="/thread/#{thread.id}#comments",data-thread-key="#{thread.id}",data-count-type="comments") 加载中...
+      include ../pager/board

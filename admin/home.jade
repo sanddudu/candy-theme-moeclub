@@ -1,0 +1,24 @@
+#home.tab-pane.active
+  .dash.clearfix
+    .dash-item.col-lg-12
+      i.icon-rocket.col-lg-2.label.label-success
+      .desc.col-lg-10 
+        h3.uptime #{config.name} 已建立 
+          != moment(config.created).fromNow(true)
+        .birthday #{config.name} 生于 
+          != moment(config.created).format('LLLL')
+    .dash-item.col-lg-12
+      i.icon-group.col-lg-2.label.label-info
+      .desc.col-lg-10 
+        h3.uptime 总用户数量 #{users.length} 人
+        //- .info 管理员 #{counts.users.admin} 人，版主 #{counts.users.banzhu} 人
+    .dash-item.col-lg-12
+      i.icon-code-fork.col-lg-2.label.label-warning
+      .desc.col-lg-10 
+        h3.uptime 总讨论节点数量 #{boards.length} 个
+        //- .info 今日新增讨论节点 3 个
+    .dash-item.col-lg-12
+      i.icon-comments-alt.col-lg-2.label.label-danger
+      .desc.col-lg-10 
+        h3.uptime 总话题量 #{threads.length} 帖
+        //- .info 今日新增话题 35 帖

@@ -1,0 +1,28 @@
+#setting.tab-pane(ng-controller="adminSetting")
+  form(name="updateSetting").form-horizontal
+    .form-group
+      label.col-lg-2.control-label 站名
+      .col-lg-6
+        input(type="text",ng-model="setting.name",ng-init="setting.name='#{config.name}'").form-control
+    .form-group
+      label.col-lg-2.control-label 描述
+      .col-lg-6
+        textarea(ng-model="setting.desc",ng-init="setting.desc='#{config.desc}'").form-control
+    .form-group
+      label.col-lg-2.control-label 地址
+      .col-lg-6
+        input(type="text",ng-model="setting.url",ng-init="setting.url='#{config.url}'").form-control
+    .form-group
+      label.col-lg-2.control-label 多说 站名
+      .col-lg-6
+        input(type="text",ng-model="setting.duoshuo.short_name",ng-init="setting.duoshuo.short_name='#{config.duoshuo.short_name}'").form-control
+    .form-group
+      label.col-lg-2.control-label 多说 secret
+      .col-lg-6
+        input(type="text",ng-model="setting.duoshuo.secret",ng-init="setting.duoshuo.secret='#{config.duoshuo.secret}'").form-control
+    input(type="hidden",ng-model="setting._id",ng-init="setting._id='#{config.id}'")
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        a(href="javascript:void(0);",ng-click="update()").btn.btn-success
+          i(ng-class="btns.edit.icon")
+          |{{btns.edit.text}}

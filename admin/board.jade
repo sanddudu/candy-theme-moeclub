@@ -1,0 +1,51 @@
+#board.tab-pane(ng-controller="adminBoard")
+  #board-dash.accordion
+    .accordion-group
+      .accordion-heading
+        a.accordion-toggle(href="#addBoard",data-parent="#board-dash",data-toggle="collapse") 
+          i.icon-plus-sign
+          |添加讨论节点
+      form#addBoard(name="addBoard").form-horizontal.accordion-body.collapse
+        .accordion-inner
+          .form-group
+            label.col-lg-2.control-label 节点名称
+            .col-lg-6
+              input(type="text",ng-model="board.new.name").form-control
+          .form-group
+            label.col-lg-2.control-label 节点URL
+            .col-lg-6
+              input(type="text",ng-model="board.new.url").form-control
+          .form-group
+            label.col-lg-2.control-label 节点描述
+            .col-lg-6
+              textarea(ng-model="board.new.desc").form-control
+          .form-group
+            .col-lg-offset-2.col-lg-10
+              a(href="javascript:void(0);",ng-click="add()").btn.btn-success
+                i(ng-class="btns.new.icon")
+                |{{btns.new.text}}
+    .accordion-group
+      .accordion-heading
+        a.accordion-toggle(href="#board-list",data-parent="#board-dash",data-toggle="collapse") 
+          i.icon-th-list
+          |讨论节点列表
+      #board-list.board-list.clearfix.accordion-body.collapse.in
+        .accordion-inner
+          - if (boards && boards.length > 0)
+            .list-group
+              - each board in boards
+                .list-group-item.board.clearfix(data-id="#{board.id}")
+                    span.name.col-lg-3
+                      a(href="/board/#{board.url}") #{board.name}
+                    span.threads.col-lg-2 #{board.threads.length == 0 ? '暂无帖子': board.threads.length + '帖子'}
+                    span.desc.col-lg-6 #{board.desc}
+                    span.bz.col-lg-1
+                      - each u in board.bz
+                        - if (u.avatar)
+                          img(src="#{u.avatar}",title="#{u.nickname ? u.nickname: u.duoshuo.user_id}")
+                        - else
+                          | #{u.nickname ? u.nickname: u.duoshuo.user_id}
+          - else 
+            h3.no 
+              i.icon-ban-circle
+              |目前还没有任何讨论节点

@@ -1,0 +1,20 @@
+- if (page.current <= page.max && page.max !== 1)
+  ul#pager.pagination.clearfix
+    - if (page.current != 1)
+      li.previous
+        a(href="/page/#{page.current - 1}",title="上一页")
+          i.fa.fa-chevron-left
+    - else
+      li.previous.disabled
+        a(href="#")
+          i.fa.fa-chevron-left
+    li.current
+      span #{page.current}/#{page.max}
+    - if (page.current != page.max)
+      li.next
+        a(href="/page/#{page.current + 1}",title="下一页")
+          i.fa.fa-chevron-right
+    - else
+      li.next.disabled
+        a(href="#")
+          i.fa.fa-chevron-right

@@ -1,0 +1,24 @@
+ul#adminTab.nav.nav-tabs
+  li.active
+    a(href="#home",data-toggle="tab")
+      i.icon-dashboard
+      |#{site.name} 概览
+  li
+    a(href="#board",data-toggle="tab")
+      i.icon-hdd
+      |讨论节点
+      span.badge.pull-right #{boards.length}
+  li
+    a(href="#user",data-toggle="tab")
+      i.icon-user
+      |成员
+      span.badge.pull-right #{users.length}
+  li
+    a(href="#themes",data-toggle="tab")
+      i.icon-hdd
+      |主题
+      span.badge.pull-right
+  li
+    a(href="#setting",data-toggle="tab")
+      i.icon-gears
+      |设置

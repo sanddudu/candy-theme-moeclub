@@ -1,0 +1,23 @@
+{
+  "name": "candy-theme-moeclub",
+  "version": "0.0.2",
+  "view engine": "jade",
+  "static": "./static",
+  "description": "A theme for Moe.Club",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanddudu/candy-theme-moeclub.git"
+  },
+  "keywords": [
+    "candy",
+    "theme"
+  ],
+  "author": "whitebox <sanddudu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanddudu/candy-theme-moeclub"
+  }
+}

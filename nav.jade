@@ -1,0 +1,33 @@
+#navbar.nav-bar
+  .container.clearfix
+    .row
+      .col-lg-4
+        .sign.clearfix
+          - if (!user)
+            a(href="/sign") 你好，请登录 #{site.name}
+          - if (user)
+            img(src="#{user.avatar}").mini-avatar
+            span.nickname 欢迎回来，#{user.nickname ? user.nickname : user.duoshuo.user_id}
+      .col-lg-8
+        - if (user)
+          ul.nav-dashboard.clearfix
+            - if (user.type == 'admin')
+              li
+                a(href="/admin")
+                  i.fa.fa-gear
+                  | 管理后台
+            li
+              a(href="/thread/new")
+                i.fa.fa-plus
+                | 发表新话题
+            li
+              a(href="/member/#{user._id}")
+                i.fa.fa-home
+                | 我的 #{site.name}
+            li
+              a(href="http://#{site.duoshuo.short_name}.duoshuo.com/logout/?sso=1&redirect_uri=#{url}/sign/out").signout 
+                i.fa.fa-power-off
+                | 登出
+        - else
+          .top-sign.clearfix
+            .ds-login.ds-login-16.clearfix
