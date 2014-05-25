@@ -5,7 +5,7 @@
       |板块导航
     #boards-nav.boards-nav.clearfix.fn-left(ng-controller="boardsNav")
       a.dropdown-trigger(href="javascript:void(0);",ng-click="list()") #{site.desc}
-        pan.icon 
+        pan.icon#droped 
            i.fa.fa-chevron-down
       ul.sub-menu.clearfix(ng-hide="!status.show")
         li(ng-repeat="board in boards"): a(ng-href="/board/{{board.url}}",ng-bind="board.name")
