@@ -13,6 +13,8 @@
               span.input-group-addon
                 i.fa.fa-search
               input(type="text",name="search",id="search",placeholder="在 #{site.name} 中搜索某个讨论节点或者话题 ......").form-control
+              span.input-group-addon#search-notice
+                按 Enter 搜索
       .col-lg-3
         .dashboards.clearfix
           - if (user)
