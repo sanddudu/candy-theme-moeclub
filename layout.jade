@@ -15,6 +15,7 @@ html(ng-app="candy")
     link(rel='shortcut icon',type="image/x-icon",href="#{static}/images/favicon.png")
     link(rel='stylesheet', href='#{static}/stylesheets/style.css')
     link(rel='stylesheet', href='#{static}/stylesheets/libs/duoshuo.css')
+    link(rel='stylesheet', href='#{static}/stylesheets/libs/scrollup.css')
     block css
   body
     block header
@@ -44,6 +45,9 @@ html(ng-app="candy")
     script(src="#{static}/javascripts/lib/bootstrap.min.js")
     script(src="#{static}/javascripts/lib/angular.min.js")
     script(src="#{static}/javascripts/lib/angular-resource.min.js")
+    //- scrollUp
+    script(src="#{static}/javascripts/lib/jquery.scrollUp.min.js")
+    script(src="#{static}/javascripts/scrollUp.js")
     //- angular app
     script(src="#{static}/javascripts/store.js")
     script(src="#{static}/javascripts/candy.js")
