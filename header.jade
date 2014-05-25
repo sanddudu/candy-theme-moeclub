@@ -7,12 +7,6 @@
         #logo.logo.clearfix.fn-left
           h1.clearfix
             a(href="/") #{site.name}
-        #boards-nav.boards-nav.clearfix.fn-left(ng-controller="boardsNav")
-          a.dropdown-trigger(href="javascript:void(0);",ng-click="list()") #{site.desc}
-            span.icon 
-              i.fa.fa-chevron-down
-          ul.sub-menu.clearfix(ng-hide="!status.show")
-            li(ng-repeat="board in boards"): a(ng-href="/board/{{board.url}}",ng-bind="board.name")
         #search-bar.search-bar.clearfix(ng-controller="search")
           form(action="/",method="POST").clearfix
             .input-group
