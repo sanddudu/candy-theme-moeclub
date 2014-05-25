@@ -19,6 +19,8 @@ html(ng-app="candy")
   body
     block header
       include header
+    block banner
+      include banner
     #content.content
       #content-inner.content-inner.container.clearfix
         .row
@@ -30,8 +32,8 @@ html(ng-app="candy")
                 include sidebar
     block footer
       #footer.footer
-        block banner
-          include banner
+        block hitokoto
+          include hitokoto
         #footer-inner.footer-inner.container.clearfix.copyright &copy; #{new Date().getFullYear()} #{site.name} #{site.desc}. 
           .poweredby.pull-right Powered by 
             a(href="https://github.com/turingou/candy",title="npm install candy").candy #{sys.name} 

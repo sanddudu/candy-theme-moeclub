@@ -8,7 +8,7 @@ $(document).ready(function () {
 				cat = "a";
 			} else if (day % 3 == 0) {
 				cat = "b";
-			} else if (day % 4 == 0) {
+			} else if (day % 5 == 0) {
 				cat = "c";
 			} else {
 				cat = "d";
@@ -18,7 +18,7 @@ $(document).ready(function () {
 		$.ajax({
 			type : "get",
 			async: false,
-			url : "http://api.hitokoto.us/rand?encode=jsc&length=20&cat=" + getcat(),
+			url : "http://api.hitokoto.us/rand?encode=jsc&length=30&cat=" + getcat(),
 			dataType : "jsonp",
 			jsonp: "fun",
 			jsonpCallback:"hitokoto",
