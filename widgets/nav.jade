@@ -2,9 +2,9 @@
   .side-cnt.clearfix
     h3.title 
       i.fa.fa-bars
-      |板块导航
+      |节点导航
     #boards-nav.boards-nav.clearfix.fn-left(ng-controller="boardsNav")
-      a.dropdown-trigger(href="javascript:void(0);",ng-click="list()") #{site.desc}
+      a.dropdown-trigger(href="javascript:void(0);",ng-click="list()") 请选择节点
         pan.icon#droped 
            i.fa.fa-chevron-down
       ul.sub-menu.clearfix(ng-hide="!status.show")
